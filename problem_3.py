@@ -5,7 +5,6 @@ def decor(func):
     def inner_dec(n):
         print('test decorator')
         print('sqrt n: ' + str(sqrt(n) + 1))
-        print('int sqrt n: ' + str(int(sqrt(n) + 1)))
         return func(n)
     return inner_dec
 
@@ -13,7 +12,8 @@ def decor(func):
 @decor
 def get_simple_dev_list(n):
     simple_dev_list = []
-    dev_list = [dev_i for dev_i in range(1, int(sqrt(n) + 1), 2) if n % dev_i == 0]    # [dev_i for dev_i in range(1, n // 2 + 1, 2) if n % dev_i == 0]
+    dev_list = [dev_i for dev_i in range(1, int(sqrt(n) + 2), 2) if n % dev_i == 0]    # [dev_i for dev_i in range(1, n // 2 + 1, 2) if n % dev_i == 0]
+    dev_list.insert(1, 2)
     dev_list.append(n)
     for i in dev_list:
         count = 0
@@ -27,7 +27,9 @@ def get_simple_dev_list(n):
     return simple_dev_list
 
 
+n = int(input('Enter int number: '))
 # simple_dev_list = get_simple_dev_list(13195)
-simple_dev_list = get_simple_dev_list(600851475143)
+# simple_dev_list = get_simple_dev_list(600851475143)
+simple_dev_list = get_simple_dev_list(n)
 print(simple_dev_list)
 print(simple_dev_list[-1])
